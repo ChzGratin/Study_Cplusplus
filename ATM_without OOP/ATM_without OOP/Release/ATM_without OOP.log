@@ -1,0 +1,9 @@
+﻿  ATM_UI.cpp
+  DBManager.cpp
+  main.cpp
+  Record.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 328 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  ATM_without OOP.vcxproj -> C:\Users\JounghyeonPark\Documents\JounghyeonPark\Gachon University\1학년 겨울계절\C++\ATM_without OOP\Release\ATM_without OOP.exe
