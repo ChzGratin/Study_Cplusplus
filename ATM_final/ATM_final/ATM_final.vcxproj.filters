@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\BaseClass">
+      <UniqueIdentifier>{f7f0d7d5-7030-4250-9573-3c74a2d417d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BaseClass\CRecord">
+      <UniqueIdentifier>{851ce59e-ff23-4402-9083-73303d93f2f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BaseClass\CDBManager">
+      <UniqueIdentifier>{3acc9e7d-80e3-4147-b2c4-4767b1ec1003}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ATM_final">
+      <UniqueIdentifier>{b40f64f1-3482-4f40-b076-1412ed7895a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ATM_final\CAccount">
+      <UniqueIdentifier>{8d24ee4f-bdf7-4f38-bb1e-e4e69a1cd89e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ATM_final\main">
+      <UniqueIdentifier>{f120b7a3-1f29-4bf7-b75d-d9929edce614}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ATM_final\CAppATM">
+      <UniqueIdentifier>{4ce8f1a5-8382-4976-bc85-ded41f4fe0c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BaseClass\CApp">
+      <UniqueIdentifier>{c2546248-6454-4ee9-905e-e3dcba5090da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ATM_final\CAdmin">
+      <UniqueIdentifier>{bc2319ff-a861-4341-ae7f-fc8fc529d151}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CRecord.h">
+      <Filter>Source Files\BaseClass\CRecord</Filter>
+    </ClInclude>
+    <ClInclude Include="CDBManager.h">
+      <Filter>Source Files\BaseClass\CDBManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CAccount.h">
+      <Filter>Source Files\ATM_final\CAccount</Filter>
+    </ClInclude>
+    <ClInclude Include="CAppATM.h">
+      <Filter>Source Files\ATM_final\CAppATM</Filter>
+    </ClInclude>
+    <ClInclude Include="CApp.h">
+      <Filter>Source Files\BaseClass\CApp</Filter>
+    </ClInclude>
+    <ClInclude Include="CAdmin.h">
+      <Filter>Source Files\ATM_final\CAdmin</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CRecord.cpp">
+      <Filter>Source Files\BaseClass\CRecord</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files\ATM_final\main</Filter>
+    </ClCompile>
+    <ClCompile Include="CAccount.cpp">
+      <Filter>Source Files\ATM_final\CAccount</Filter>
+    </ClCompile>
+    <ClCompile Include="CDBManager.cpp">
+      <Filter>Source Files\BaseClass\CDBManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CApp.cpp">
+      <Filter>Source Files\BaseClass\CApp</Filter>
+    </ClCompile>
+    <ClCompile Include="CAppATM_FrontPage.cpp">
+      <Filter>Source Files\ATM_final\CAppATM</Filter>
+    </ClCompile>
+    <ClCompile Include="CAppATM_Service.cpp">
+      <Filter>Source Files\ATM_final\CAppATM</Filter>
+    </ClCompile>
+    <ClCompile Include="CAdmin.cpp">
+      <Filter>Source Files\ATM_final\CAdmin</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

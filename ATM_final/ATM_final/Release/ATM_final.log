@@ -1,0 +1,13 @@
+﻿  CAccount.cpp
+  CAdmin.cpp
+  CAppATM_FrontPage.cpp
+  CApp.cpp
+  CAppATM_Service.cpp
+  CDBManager.cpp
+  CRecord.cpp
+  main.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 344 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  ATM_final.vcxproj -> C:\Users\JounghyeonPark\Documents\JounghyeonPark\Gachon University\1학년 겨울계절\C++\ATM_final\Release\ATM_final.exe
