@@ -24,6 +24,9 @@ public:
 		wcin.imbue(locale("kor"));
 	}
 
+//protected:
+	//CAccount* m_curRecord; //현재 CDBApp 클래스가 처리하고 있는 레코드; 포인터
+
 private:
 	const size_t ACCOUNT_PER_PAGE = 10;
 	void m_PageView();

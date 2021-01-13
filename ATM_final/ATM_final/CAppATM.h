@@ -25,7 +25,6 @@ public:
 	}
 
 //protected:
-	//CDBManager<CAccount> m_DBM; //DB 클래스
 	//CAccount* m_curRecord; //현재 CDBApp 클래스가 처리하고 있는 레코드; 포인터
 
 private: //메소드의 정의부가 너무 길어져서 2개 파일에 나누어 정의함

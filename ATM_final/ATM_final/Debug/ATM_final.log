@@ -1,4 +1,7 @@
-﻿  CAppAdmin.cpp
+﻿  CAccount.cpp
+  CAppATM_FrontPage.cpp
+  CAppATM_Service.cpp
+  CAppAdmin.cpp
   main.cpp
   Generating Code...
   ATM_final.vcxproj -> C:\Users\JounghyeonPark\Documents\JounghyeonPark\Gachon University\1학년 겨울계절\C++\ATM_final\Debug\ATM_final.exe
