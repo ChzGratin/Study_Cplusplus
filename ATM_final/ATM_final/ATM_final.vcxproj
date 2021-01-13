@@ -140,7 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CAccount.h" />
-    <ClInclude Include="CAdmin.h" />
+    <ClInclude Include="CAppAdmin.h" />
     <ClInclude Include="CAppATM.h" />
     <ClInclude Include="CApp.h" />
     <ClInclude Include="CDBManager.h" />
@@ -148,7 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CAccount.cpp" />
-    <ClCompile Include="CAdmin.cpp" />
+    <ClCompile Include="CAppAdmin.cpp" />
     <ClCompile Include="CAppATM_FrontPage.cpp" />
     <ClCompile Include="CApp.cpp" />
     <ClCompile Include="CAppATM_Service.cpp" />

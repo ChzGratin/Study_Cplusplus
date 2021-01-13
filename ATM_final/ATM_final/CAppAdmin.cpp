@@ -3,7 +3,7 @@
 작성일: 2021-01-12
 ================================*/
 
-#include "CAdmin.h"
+#include "CAppAdmin.h"
 
 //템플릿 클래스의 정의 포함 (템플릿 클래스의 헤더와 소스를 분리했기 때문)
 //CAppATM은 템플릿 클래스 CDBManager와 연관됨
@@ -11,7 +11,7 @@
 
 //================================================================
 
-void CAdmin::m_PageView() //계좌를 1페이지에 ACCOUNT_PER_PAGE(=10)개씩 끊어서 출력; 페이지 넘기기; 계좌 선택
+void CAppAdmin::m_PageView() //계좌를 1페이지에 ACCOUNT_PER_PAGE(=10)개씩 끊어서 출력; 페이지 넘기기; 계좌 선택
 {
 	wchar_t menu; //사용자 입력 (메뉴 코드)
 
@@ -20,7 +20,7 @@ void CAdmin::m_PageView() //계좌를 1페이지에 ACCOUNT_PER_PAGE(=10)개씩 끊어서 출
 
 	while (true)
 	{
-		size_t size = m_DB.size(); //전체 계좌 수; 업데이트
+		size_t size = GetSize(); //전체 계좌 수; 업데이트
 
 		system("cls");
 		wcout << L"<202035156 박정현의 ATM_final (관리자)>" << endl
@@ -33,7 +33,7 @@ void CAdmin::m_PageView() //계좌를 1페이지에 ACCOUNT_PER_PAGE(=10)개씩 끊어서 출
 		{
 			if ((curPage * ACCOUNT_PER_PAGE + i) >= size) { break; }
 			wcout << L"[" << i << L"]: ";
-			wcout << m_DB[(curPage * ACCOUNT_PER_PAGE + i)].GetName() << endl;
+			wcout << GetRecord(curPage * ACCOUNT_PER_PAGE + i).GetName() << endl;
 			curCount++;
 		}
 		wcout << L"================================" << endl;
@@ -82,7 +82,7 @@ void CAdmin::m_PageView() //계좌를 1페이지에 ACCOUNT_PER_PAGE(=10)개씩 끊어서 출
 	}
 }
 
-void CAdmin::m_ManageAccount(size_t index) //계좌 정보 출력; 계좌 삭제
+void CAppAdmin::m_ManageAccount(size_t index) //계좌 정보 출력; 계좌 삭제
 {
 	int menu; //사용자 입력 (메뉴 코드)
 
@@ -90,10 +90,10 @@ void CAdmin::m_ManageAccount(size_t index) //계좌 정보 출력; 계좌 삭제
 	{
 		system("cls");
 		wcout << L"<202035156 박정현의 ATM_final (관리자)>" << endl
-			<< L"이름: " << m_DB[index].GetName() << endl
-			<< L"ID: " << m_DB[index].GetID() << endl
-			<< L"PW: " << m_DB[index].GetPW() << endl
-			<< L"계좌 잔액: " << m_DB[index].GetBalance() << "원" << endl
+			<< L"이름: " << GetRecord(index).GetName() << endl
+			<< L"ID: " << GetRecord(index).GetID() << endl
+			<< L"PW: " << GetRecord(index).GetPW() << endl
+			<< L"계좌 잔액: " << GetRecord(index).GetBalance() << "원" << endl
 			<< L"================================" << endl
 			<< L" 0: 뒤로가기" << endl
 			<< L"-1: 계좌 삭제" << endl
@@ -108,7 +108,7 @@ void CAdmin::m_ManageAccount(size_t index) //계좌 정보 출력; 계좌 삭제
 
 		case -1: //계좌 삭제
 			wcout << L"<계좌 삭제>" << endl;
-			m_DB.erase(m_DB.begin() + index);
+			DeleteRecord(index);
 			wcout << L"계좌가 삭제되었습니다." << endl;
 			system("pause");
 			return; //PageView()로 복귀

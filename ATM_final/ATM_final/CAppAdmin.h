@@ -3,21 +3,21 @@
 작성일: 2021-01-12
 ================================*/
 
+#ifndef CAPPADMIN_H
+#define CAPPADMIN_H
+
+#include "CApp.h"
 #include "CAccount.h"
-#include "CDBManager.h"
 
 #include <iostream>
 #include <Windows.h>
 using namespace std;
 
-#ifndef CADMIN_H
-#define CADMIN_H
-
 //ATM 응용 프로그램 클래스 (관리자)
-class CAdmin: public CDBManager<CAccount>
+class CAppAdmin: public CApp<CAccount>
 {
 public:
-	CAdmin(wstring FileName) : CDBManager<CAccount>(FileName)
+	CAppAdmin(wstring FileName) : CApp(FileName)
 	{
 		//로케일 설정
 		wcout.imbue(locale("kor"));

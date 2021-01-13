@@ -37,7 +37,7 @@
     <Filter Include="Source Files\BaseClass\CApp">
       <UniqueIdentifier>{c2546248-6454-4ee9-905e-e3dcba5090da}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\ATM_final\CAdmin">
+    <Filter Include="Source Files\ATM_final\CAppAdmin">
       <UniqueIdentifier>{bc2319ff-a861-4341-ae7f-fc8fc529d151}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -57,8 +57,8 @@
     <ClInclude Include="CApp.h">
       <Filter>Source Files\BaseClass\CApp</Filter>
     </ClInclude>
-    <ClInclude Include="CAdmin.h">
-      <Filter>Source Files\ATM_final\CAdmin</Filter>
+    <ClInclude Include="CAppAdmin.h">
+      <Filter>Source Files\ATM_final\CAppAdmin</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -83,8 +83,8 @@
     <ClCompile Include="CAppATM_Service.cpp">
       <Filter>Source Files\ATM_final\CAppATM</Filter>
     </ClCompile>
-    <ClCompile Include="CAdmin.cpp">
-      <Filter>Source Files\ATM_final\CAdmin</Filter>
+    <ClCompile Include="CAppAdmin.cpp">
+      <Filter>Source Files\ATM_final\CAppAdmin</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

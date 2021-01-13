@@ -4,7 +4,7 @@
 ================================*/
 
 #include "CAppATM.h"
-#include "CAdmin.h"
+#include "CAppAdmin.h"
 #include <string> //문자열 비교 함수 strcmp()
 
 //템플릿 클래스의 정의 포함 (템플릿 클래스의 헤더와 소스를 분리했기 때문)
@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
 	{
 		if (strcmp(argv[1], STR_ADMIN) == 0)
 		{
-			CAdmin myAdmin(WSTR_FILENAME);
+			CAppAdmin myAdmin(WSTR_FILENAME);
 			return myAdmin.Run();
 		}
 	}

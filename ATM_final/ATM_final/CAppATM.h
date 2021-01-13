@@ -17,7 +17,7 @@ using namespace std;
 class CAppATM: public CApp<CAccount>
 {
 public:
-	CAppATM(wstring FileName) : CApp<CAccount>(FileName)
+	CAppATM(wstring FileName) : CApp(FileName)
 	{
 		//로케일 설정
 		wcout.imbue(locale("kor"));
@@ -42,10 +42,6 @@ private: //메소드의 정의부가 너무 길어져서 2개 파일에 나누어 정의함
 	void m_Withdraw(); //출금
 	void m_Transfer(); //이체
 	void m_DeleteAccount(); //계좌 삭제
-
-	//CAppATM_Admin.cpp
-	void m_PageView(); //계좌를 1페이지에 10개씩 끊어서 출력; 페이지 넘기기; 계좌 선택
-	void m_ManageAccount(); //계좌 정보 출력; 계좌 삭제
 
 public:
 	int Run()

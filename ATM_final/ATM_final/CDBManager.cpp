@@ -44,6 +44,12 @@ CDBManager<R>::~CDBManager()
 }
 
 template <typename R>
+size_t CDBManager<R>::GetSize()
+{
+	return m_DB.size();
+}
+
+template <typename R>
 int CDBManager<R>::QueryRecord(wstring ID) //Query a record with id; Success: non-negative index, Fail: -1
 {
 	for (size_t i = 0; i < m_DB.size(); i++)

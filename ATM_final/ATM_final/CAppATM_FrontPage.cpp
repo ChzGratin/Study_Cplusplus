@@ -67,7 +67,7 @@ void CAppATM::m_LogIn() //로그인; 좀 더 간단하고 현실적으로 구현
 	wcout << L"PW: ";
 	wcin >> bufPW;
 
-	int index = m_DBM.QueryRecord(bufID); //사용자가 입력한 ID에 대응하는 계좌의 인덱스 질의
+	int index = QueryRecord(bufID); //사용자가 입력한 ID에 대응하는 계좌의 인덱스 질의
 	if (index < 0) //존재하지 않는 ID라면
 	{
 		wcout << L"존재하지 않는 계좌 ID입니다." << endl;
@@ -76,7 +76,7 @@ void CAppATM::m_LogIn() //로그인; 좀 더 간단하고 현실적으로 구현
 	}
 	else //ID가 존재한다면
 	{
-		if (m_DBM.GetRecord(index).GetPW() != bufPW) //잘못된 비밀번호라면
+		if (GetRecord(index).GetPW() != bufPW) //잘못된 비밀번호라면
 		{
 			wcout << L"잘못된 비밀번호입니다." << endl;
 			system("pause");
@@ -84,7 +84,7 @@ void CAppATM::m_LogIn() //로그인; 좀 더 간단하고 현실적으로 구현
 		}
 		else //올바른 비밀번호라면; 로그인 성공
 		{
-			m_curRecord = &(m_DBM.GetRecord(index)); //CDBApp 클래스가 처리할 레코드를 지정
+			m_curRecord = &(GetRecord(index)); //CDBApp 클래스가 처리할 레코드를 지정
 
 			wcout << m_curRecord->GetName() << L"님 안녕하세요." << endl;
 			system("pause");
@@ -103,7 +103,7 @@ void CAppATM::m_CreateAccount() //계좌 생성
 	wcout << L"ID: ";
 	wcin >> bufID;
 
-	if (m_DBM.QueryRecord(bufID) >= 0) //이미 등록된 계좌 ID라면
+	if (QueryRecord(bufID) >= 0) //이미 등록된 계좌 ID라면
 	{
 		wcout << L"이미 등록된 계좌 ID입니다." << endl;
 		system("pause");
@@ -119,7 +119,7 @@ void CAppATM::m_CreateAccount() //계좌 생성
 	tmpAcc.GetID() = bufID;
 	tmpAcc.GetPW() = bufPW;
 	tmpAcc.GetName() = bufName;
-	m_DBM.AddRecord(tmpAcc);
+	AddRecord(tmpAcc);
 
 	wcout << bufName << L"님의 계좌가 생성되었습니다." << endl;
 	system("pause");

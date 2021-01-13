@@ -9,7 +9,7 @@
 #include "CApp.h"
 
 template <typename R>
-CApp<R>::CApp(wstring FileName): m_DBM(FileName), m_curRecord(nullptr)
+CApp<R>::CApp(wstring FileName): CDBManager<R>(FileName), m_curRecord(nullptr)
 {}
 
 #endif

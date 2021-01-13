@@ -19,10 +19,9 @@ using namespace std;
 
 //CDBManager<R>를 사용하는 응용 프로그램 클래스
 template <typename R>
-class CApp
+class CApp: public CDBManager<R>
 {
 protected:
-	CDBManager<R> m_DBM; //DBManager 클래스
 	R* m_curRecord; //현재 CDBApp 클래스가 처리하고 있는 레코드; 포인터
 
 public:

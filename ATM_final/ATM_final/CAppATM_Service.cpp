@@ -135,7 +135,7 @@ void CAppATM::m_Transfer() //이체
 	wcin >> bufID_to;
 
 	//입금계좌 존재여부 및 잔액 확인
-	int index = m_DBM.QueryRecord(bufID_to); //사용자가 입력한 ID에 대응하는 계좌의 인덱스 질의
+	int index = QueryRecord(bufID_to); //사용자가 입력한 ID에 대응하는 계좌의 인덱스 질의
 	if (index < 0) //존재하지 않는 계좌라면
 	{
 		wcout << L"[입금계좌 검색 실패] 이체실패" << endl;
@@ -144,9 +144,9 @@ void CAppATM::m_Transfer() //이체
 	}
 	else //계좌가 존재한다면
 	{
-		if (m_DBM.GetRecord(index).GetBalance() + bufTransfer > CAccount::MAX_BALANCE) //최대 예금액을 초과할 떄
+		if (GetRecord(index).GetBalance() + bufTransfer > CAccount::MAX_BALANCE) //최대 예금액을 초과할 떄
 		{
-			bufTransfer = CAccount::MAX_BALANCE - m_DBM.GetRecord(index).GetBalance(); //이체액 재계산
+			bufTransfer = CAccount::MAX_BALANCE - GetRecord(index).GetBalance(); //이체액 재계산
 
 			wcout << L"[입금계좌 잔액 초과] "
 				  << bufTransfer << L"원을 이체합니다." << endl;
@@ -164,7 +164,7 @@ void CAppATM::m_Transfer() //이체
 
 	//이체 수행
 	m_curRecord->GetBalance() -= bufTransfer; //출금
-	m_DBM.GetRecord(index).GetBalance() += bufTransfer; //입금
+	GetRecord(index).GetBalance() += bufTransfer; //입금
 	wcout << L"이체성공" << endl;
 	system("pause");
 	return;
@@ -174,8 +174,8 @@ void CAppATM::m_DeleteAccount() //계좌 삭제
 {
 	wcout << L"<계좌 삭제>" << endl;
 
-	int index = m_DBM.QueryRecord(m_curRecord->GetID()); //현재 사용자의 레코드에 대응되는 인덱스 질의
-	m_DBM.DeleteRecord(index); //현재 사용자의 레코드 제거
+	int index = QueryRecord(m_curRecord->GetID()); //현재 사용자의 레코드에 대응되는 인덱스 질의
+	DeleteRecord(index); //현재 사용자의 레코드 제거
 	m_curRecord = nullptr; //메모리가 해제되었으므로 nullptr 처리
 
 	wcout << L"계좌가 삭제되었습니다." << endl;

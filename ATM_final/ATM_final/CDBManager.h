@@ -22,13 +22,13 @@ class CDBManager
 private:
 	wstring m_FileName;
 	wfstream m_fs;
-
-protected:
 	vector<R> m_DB;
 
 public:
 	CDBManager(wstring FileName); //Open or create fileName.txt
 	~CDBManager(); //Update and close fileName.txt
+
+	size_t GetSize(); //Get the size of CDBManager::m_DB(vector<R>).
 
 	int QueryRecord(wstring ID); //Query a record with id; Success: non-negative index, Fail: -1
 
