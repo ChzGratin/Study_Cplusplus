@@ -1,11 +1,14 @@
 ﻿  CAccount.cpp
   CAppATM_FrontPage.cpp
   CAppATM_Service.cpp
+C:\Users\JounghyeonPark\Documents\JounghyeonPark\Gachon University\1학년 겨울계절\C++\ATM_final\ATM_final\CAppATM_Service.cpp(102,14): warning C4244: 'argument': conversion from 'ULL' to 'int', possible loss of data
+C:\Users\JounghyeonPark\Documents\JounghyeonPark\Gachon University\1학년 겨울계절\C++\ATM_final\ATM_final\CAppATM_Service.cpp(136,14): warning C4244: 'argument': conversion from 'ULL' to 'int', possible loss of data
+C:\Users\JounghyeonPark\Documents\JounghyeonPark\Gachon University\1학년 겨울계절\C++\ATM_final\ATM_final\CAppATM_Service.cpp(197,14): warning C4244: 'argument': conversion from 'ULL' to 'int', possible loss of data
   CAppAdmin.cpp
   main.cpp
   Generating code
-  69 of 345 functions (20.0%) were compiled, the rest were copied from previous compilation.
-    1 functions were new in current compilation
-    17 functions had inline decision re-evaluated but remain unchanged
+  1 of 396 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    2 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   ATM_final.vcxproj -> C:\Users\JounghyeonPark\Documents\JounghyeonPark\Gachon University\1학년 겨울계절\C++\ATM_final\Release\ATM_final.exe

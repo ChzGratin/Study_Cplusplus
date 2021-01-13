@@ -40,6 +40,7 @@ private: //메소드의 정의부가 너무 길어져서 2개 파일에 나누어 정의함
 	void m_Deposit(); //입금
 	void m_Withdraw(); //출금
 	void m_Transfer(); //이체
+	void m_ViewLog(); //거래내역 조회
 	void m_DeleteAccount(); //계좌 삭제
 
 public:

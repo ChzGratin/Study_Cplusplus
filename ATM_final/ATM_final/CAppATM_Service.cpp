@@ -26,6 +26,7 @@ void CAppATM::m_ServiceMenu() //서비스 메뉴
 			<< L" 1: 입금" << endl
 			<< L" 2: 출금" << endl
 			<< L" 3: 이체" << endl
+			<< L" 4: 거래내역 조회" << endl
 			<< L"-1: 계좌 삭제" << endl
 			<< L"================================" << endl
 			<< L"메뉴 선택: ";
@@ -44,6 +45,9 @@ void CAppATM::m_ServiceMenu() //서비스 메뉴
 			continue;
 		case 3: //이체
 			m_Transfer();
+			continue;
+		case 4: //거래내역 조회
+			m_ViewLog();
 			continue;
 		case -1: //계좌 삭제
 			m_DeleteAccount();
@@ -82,17 +86,24 @@ void CAppATM::m_Deposit() //입금
 
 		wcout << bufCash << L"원이 입금되었습니다." << endl;
 		system("pause");
-		return;
 	}
 	else //최대 예금액을 초과할 때
 	{
-		wcout << L"계좌의 최대 예금액을 초과하여," << endl
-			  << CAccount::MAX_BALANCE - m_curRecord->GetBalance() << L"원이 입금되었습니다." << endl;
-		system("pause");
-
+		bufCash = CAccount::MAX_BALANCE - m_curRecord->GetBalance();
 		m_curRecord->GetBalance() = CAccount::MAX_BALANCE;
-		return;
+
+		wcout << L"계좌의 최대 예금액을 초과하여," << endl
+			  << bufCash << L"원이 입금되었습니다." << endl;
+		system("pause");
 	}
+
+	//입금 로그 기록
+	wchar_t bufItow[20] = L"";
+	if (_itow_s(bufCash, bufItow, 10) == 0) //정수를 문자열로 변환
+	{
+		m_curRecord->GetLog() += (L"[입금] +" + wstring(bufItow) + L"원" + CAccount::DELIMITER); //ex) L"[예금] +1000원|"
+	}
+	return;
 }
 
 void CAppATM::m_Withdraw() //출금
@@ -109,19 +120,25 @@ void CAppATM::m_Withdraw() //출금
 
 		wcout << bufCash << L"원이 출금되었습니다." << endl;
 		system("pause");
-		return;
 	}
 	else //잔액이 부족할 때
 	{
-		wcout << L"계좌의 잔액이 부족하여," << endl
-			  << m_curRecord->GetBalance() << L"원이 출금되었습니다." << endl;
-		system("pause");
-
+		bufCash = m_curRecord->GetBalance();
 		m_curRecord->GetBalance() = 0;
-		return;
-	}
-}
 
+		wcout << L"계좌의 잔액이 부족하여," << endl
+			  << bufCash << L"원이 출금되었습니다." << endl;
+		system("pause");
+	}
+
+	//출금 로그 기록
+	wchar_t bufItow[20] = L"";
+	if (_itow_s(bufCash, bufItow, 10) == 0) //정수를 문자열로 변환
+	{
+		m_curRecord->GetLog() += (L"[출금] -" + wstring(bufItow) + L"원" + CAccount::DELIMITER); //ex) L"[출금] -1000원|"
+	}
+	return;
+}
 
 void CAppATM::m_Transfer() //이체
 {
@@ -133,6 +150,13 @@ void CAppATM::m_Transfer() //이체
 	wcin >> bufTransfer;
 	wcout << L"입금계좌 ID: ";
 	wcin >> bufID_to;
+
+	if (bufID_to == m_curRecord->GetID())
+	{
+		wcout << L"[무의미한 이체 시도] 출금 계좌와 입금 계좌는 같을 수 없습니다." << endl;
+		system("pause");
+		return;
+	}
 
 	//입금계좌 존재여부 및 잔액 확인
 	int index = QueryRecord(bufID_to); //사용자가 입력한 ID에 대응하는 계좌의 인덱스 질의
@@ -166,6 +190,24 @@ void CAppATM::m_Transfer() //이체
 	m_curRecord->GetBalance() -= bufTransfer; //출금
 	GetRecord(index).GetBalance() += bufTransfer; //입금
 	wcout << L"이체성공" << endl;
+	system("pause");
+
+	//이체 로그 기록 ex) Alice -> Bob
+	wchar_t bufItow[20] = L"";
+	if (_itow_s(bufTransfer, bufItow, 10) == 0) //정수를 문자열로 변환
+	{
+		m_curRecord->GetLog() += (L"[이체] -" + wstring(bufItow) + L"원 ->" + GetRecord(index).GetName() + CAccount::DELIMITER); //ex) L"[이체] -1000원 ->Bob|"
+		GetRecord(index).GetLog() += (L"[이체] +" + wstring(bufItow) + L"원 <-" + m_curRecord->GetName() + CAccount::DELIMITER); //ex) L"[이체] +1000원 <-Alice|"
+	}
+	return;
+}
+
+void CAppATM::m_ViewLog() //거래내역 조회
+{
+	wcout << L"<거래내역 조회>" << endl;
+
+	m_curRecord->PrintLog();
+	wcout << L"================================" << endl;
 	system("pause");
 	return;
 }

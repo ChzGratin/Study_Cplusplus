@@ -11,20 +11,31 @@
 #include "CApp.cpp"
 #include "CDBManager.cpp"
 
+const wchar_t* const WSTR_EXENAME = L"ATM_final.exe";
 const wchar_t* const WSTR_FILENAME = L"ATM_final.txt";
-const char* const STR_ADMIN = "admin";
+const wchar_t* const STR_ADMIN = L"admin";
 
-int main(int argc, char* argv[])
+int wmain(int argc, wchar_t* argv[]) //유니코드를 지원하는 main()
 {
-	//명령행 인자가 ATM_final.exe admin 이면 관리자 프로그램 실행
-	if (argc >= 2)
+	wstring argv_0(argv[0]); //L"파일 경로+ATM_final.exe"와 L"ATM_final.exe"를 구분하기 위함; ATM_final.exe가 있는 곳에 ATM_final.txt가 생성되아야 함
+	wstring FileLoc; //파일 위치
+
+	if (argv_0 == WSTR_EXENAME) { FileLoc = WSTR_FILENAME; } //L"ATM_final.exe"인 경우
+	else //L"파일 경로+ATM_final.exe"인 경우, ATM_final.exe 부분을 지우고 ATM_final.txt를 덧붙여야 함
 	{
-		if (strcmp(argv[1], STR_ADMIN) == 0)
-		{
-			CAppAdmin myAdmin(WSTR_FILENAME);
-			return myAdmin.Run();
-		}
+		size_t index_exeName = argv_0.rfind(WSTR_EXENAME); //파일 경로에 L"ATM_final.exe"가 있을 때를 대비하여 rfind 사용
+		FileLoc = argv_0.erase(index_exeName) + WSTR_FILENAME; //L"파일 경로" + L"ATM_final.txt"
 	}
-	CAppATM myATM(WSTR_FILENAME);
-	return myATM.Run();
+
+	//명령행 인자가 ATM_final.exe admin 이면 관리자 프로그램 실행
+	if (argc >= 2 && wcscmp(argv[1], STR_ADMIN) == 0)
+	{
+		CAppAdmin myAdmin(FileLoc);
+		return myAdmin.Run();
+	}
+	else
+	{
+		CAppATM myATM(FileLoc);
+		return myATM.Run();
+	}
 }

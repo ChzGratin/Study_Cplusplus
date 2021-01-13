@@ -55,7 +55,10 @@ void CAppAdmin::m_PageView() //계좌를 1페이지에 ACCOUNT_PER_PAGE(=10)개씩 끊어서
 		{
 			if ((size_t)(menu - L'0') < curCount) //현재 페이지에서 선택할 수 있는 계좌라면
 			{
-				m_ManageAccount(curPage * ACCOUNT_PER_PAGE + menu - L'0'); //계좌 관리
+				m_curRecord = &GetRecord(curPage * ACCOUNT_PER_PAGE + menu - L'0');
+				m_ManageAccount(); //계좌 관리
+				m_curRecord = nullptr;
+
 				curPage = 0; //계좌 관리가 끝나면 첫 페이지로 복귀
 			}
 			continue;
@@ -82,7 +85,7 @@ void CAppAdmin::m_PageView() //계좌를 1페이지에 ACCOUNT_PER_PAGE(=10)개씩 끊어서
 	}
 }
 
-void CAppAdmin::m_ManageAccount(size_t index) //계좌 정보 출력; 계좌 삭제
+void CAppAdmin::m_ManageAccount() //계좌 정보 출력; 계좌 삭제
 {
 	int menu; //사용자 입력 (메뉴 코드)
 
@@ -90,12 +93,13 @@ void CAppAdmin::m_ManageAccount(size_t index) //계좌 정보 출력; 계좌 삭제
 	{
 		system("cls");
 		wcout << L"<202035156 박정현의 ATM_final (관리자)>" << endl
-			<< L"이름: " << GetRecord(index).GetName() << endl
-			<< L"ID: " << GetRecord(index).GetID() << endl
-			<< L"PW: " << GetRecord(index).GetPW() << endl
-			<< L"계좌 잔액: " << GetRecord(index).GetBalance() << "원" << endl
+			<< L"이름: " << m_curRecord->GetName() << endl
+			<< L"ID: " << m_curRecord->GetID() << endl
+			<< L"PW: " << m_curRecord->GetPW() << endl
+			<< L"계좌 잔액: " << m_curRecord->GetBalance() << "원" << endl
 			<< L"================================" << endl
 			<< L" 0: 뒤로가기" << endl
+			<< L" 1: 거래내역 조회" << endl
 			<< L"-1: 계좌 삭제" << endl
 			<< L"================================" << endl
 			<< L"메뉴 선택: ";
@@ -106,9 +110,13 @@ void CAppAdmin::m_ManageAccount(size_t index) //계좌 정보 출력; 계좌 삭제
 		case 0: //뒤로가기
 			return; //PageView()로 복귀
 
+		case 1: //거래내역 조회
+			m_ViewLog();
+			continue;
+
 		case -1: //계좌 삭제
 			wcout << L"<계좌 삭제>" << endl;
-			DeleteRecord(index);
+			DeleteRecord(QueryRecord(m_curRecord->GetID()));
 			wcout << L"계좌가 삭제되었습니다." << endl;
 			system("pause");
 			return; //PageView()로 복귀
@@ -119,4 +127,14 @@ void CAppAdmin::m_ManageAccount(size_t index) //계좌 정보 출력; 계좌 삭제
 			continue;
 		}
 	}
+}
+
+void CAppAdmin::m_ViewLog() //거래내역 조회
+{
+	wcout << L"<거래내역 조회>" << endl;
+
+	m_curRecord->PrintLog();
+	wcout << L"================================" << endl;
+	system("pause");
+	return;
 }

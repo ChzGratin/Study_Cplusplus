@@ -30,7 +30,8 @@ public:
 private:
 	const size_t ACCOUNT_PER_PAGE = 10;
 	void m_PageView();
-	void m_ManageAccount(size_t index);
+	void m_ManageAccount();
+	void m_ViewLog(); //거래내역 조회
 
 public:
 	int Run()

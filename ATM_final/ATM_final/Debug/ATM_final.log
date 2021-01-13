@@ -1,6 +1,9 @@
 ﻿  CAccount.cpp
   CAppATM_FrontPage.cpp
   CAppATM_Service.cpp
+C:\Users\JounghyeonPark\Documents\JounghyeonPark\Gachon University\1학년 겨울계절\C++\ATM_final\ATM_final\CAppATM_Service.cpp(102,14): warning C4244: 'argument': conversion from 'ULL' to 'int', possible loss of data
+C:\Users\JounghyeonPark\Documents\JounghyeonPark\Gachon University\1학년 겨울계절\C++\ATM_final\ATM_final\CAppATM_Service.cpp(136,14): warning C4244: 'argument': conversion from 'ULL' to 'int', possible loss of data
+C:\Users\JounghyeonPark\Documents\JounghyeonPark\Gachon University\1학년 겨울계절\C++\ATM_final\ATM_final\CAppATM_Service.cpp(197,14): warning C4244: 'argument': conversion from 'ULL' to 'int', possible loss of data
   CAppAdmin.cpp
   main.cpp
   Generating Code...
