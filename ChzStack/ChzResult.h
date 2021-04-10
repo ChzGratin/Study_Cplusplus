@@ -14,7 +14,7 @@ typedef struct
 
 int ChzResult_Init(ChzResult* CR, size_t sizeData)
 {
-	if (sizeData == 0) { return FAIL; }
+	if (sizeData <= 0) { return FAIL; }
 
 	CR->pData = malloc(sizeData);
 	if (CR->pData == NULL) { return FAIL; }
